@@ -1,0 +1,17 @@
+name: scan-collector-rust
+services:
+  scan-collector:
+    build: .
+    environment:
+      AUTH_USER: ${AUTH_USER:?Set AUTH_USER in .env}
+      AUTH_PASSWORD: ${AUTH_PASSWORD:?Set AUTH_PASSWORD in .env}
+      PORT: 8765
+      DATA_DIR: /data
+      SESSION_TTL: ${SESSION_TTL:-8h}
+      SESSION_EXTENDED_TTL: ${SESSION_EXTENDED_TTL:-720h}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+    ports:
+      - "${PORT:-8765}:8765"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
