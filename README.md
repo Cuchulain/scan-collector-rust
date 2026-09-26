@@ -37,3 +37,7 @@ cargo test
 ```
 
 Set `AUTH_USER` and `AUTH_PASSWORD` before running locally. `DATA_DIR` defaults to `/data`; set it to a writable local path for development.
+
+## Load testing
+
+See [`k6/README.md`](k6/README.md) for a reusable k6 scan-ingest load test that targets either the Go or Rust server.
